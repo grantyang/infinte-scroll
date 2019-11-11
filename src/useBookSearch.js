@@ -24,7 +24,7 @@ export default function useBookSearch(query, pageNumber) {
       setBooks(prevBooks => {
         return [...new Set([...prevBooks, ...res.data.docs.map(book => book.title)])]
       })
-      setHasMore(res.data.docs.length < 100);
+      setHasMore(res.data.docs.length > 0);
       setLoading(false);
     }).catch(err => {
       if (axios.isCancel(err)) return;
